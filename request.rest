@@ -1,3 +1,26 @@
+### CADASTRO
+
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+	"name": "Eric",
+	"email": "eric@dev.com",
+	"password": "123456"
+}
+
+### LOGIN
+
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+	"email": "adeir@dev.com",
+	"password": "123456"
+}
+
+###
+
 POST http://localhost:3003/bands/create
 Authorization: 1
 Content-Type: application/json

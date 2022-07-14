@@ -69,7 +69,7 @@ export interface UserInputDTO{
     email: string;
     password: string;
     name: string;
-    role: string;
+    role: UserRole;
 }
 
 export interface LoginInputDTO{
