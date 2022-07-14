@@ -1,0 +1,13 @@
+POST http://localhost:3003/bands/create
+Authorization: 1
+Content-Type: application/json
+
+{
+    "name": "Calcinha Preta",
+    "music_genre": "Forró",
+    "responsible": "Adeire"
+}
+
+###
+GET http://localhost:3003/bands?name=Calcinha Preta
+Authorization: 1
