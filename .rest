@@ -1,0 +1,20 @@
+### CADASTRO
+
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+	"name": "Mariana",
+	"email": "mariana@dev.com",
+	"password": "123456"
+}
+
+### LOGIN
+
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+	"email": "mariana@dev.com",
+	"password": "123456"
+}

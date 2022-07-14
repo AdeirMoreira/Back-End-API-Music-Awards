@@ -1,8 +1,10 @@
-import { Router } from "express";
 
-export const userRouter = Router()
+import express from "express";
+import {UserController} from "../../controller/UserController"
 
-//Injeção de dependências
+export const userRouter = express.Router();
 
-userRouter.post("/signup", )
-userRouter.get("/login", )
+const userController = new UserController();
+
+userRouter.post("/signup", userController.signup);
+userRouter.post("/login", userController.login);

@@ -14,4 +14,8 @@ export default class BaseDatabase{
             database: process.env.DB_NAME
         }
     });
+
+    public static async destroyConnection(): Promise<void> {
+        await BaseDatabase.connection.destroy();
+     }
 }
