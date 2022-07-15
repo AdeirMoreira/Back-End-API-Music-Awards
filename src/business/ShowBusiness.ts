@@ -1,9 +1,8 @@
 import { ShowDataBase } from "../data/ShowData";
 import { CustomError } from "./errors/CustomError";
-import { Show, showInterface } from "../model/Show";
+import { Show } from "../model/Show";
 import { RegisterShowDTO, ShowsDayDTO } from "../model/Types";
 import { Authenticator } from "../services/Authenticator";
-import { HashManager } from "../services/HashManager";
 import IdGenerator from "../services/IdGenerator";
 import { showInputsValidation } from "./validation/ShowInputs";
 
@@ -40,6 +39,9 @@ export class ShowBusiness {
 
         return  await this.showDataBase.insert(show)
         } catch (error:any) {
+            if(error.message.includes('jwt')){
+                throw new CustomError(401,'Token inválido!')
+            }
             throw new CustomError(error.statusCode, error.message);
         }
     }
@@ -52,6 +54,9 @@ export class ShowBusiness {
 
             return this.showDataBase.getByDay(inputs.week_day)
         } catch (error:any) {
+            if(error.message.includes('jwt')){
+                throw new CustomError(401,'Token inválido!')
+            }
             throw new CustomError(error.statusCode, error.message);
         }
     }
