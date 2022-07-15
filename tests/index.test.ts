@@ -2,7 +2,7 @@ import {ShowBusiness} from "../src/business/ShowBusiness"
 import { showInputsValidation } from "../src/business/validation/ShowInputs"
 import { RegisterShowDTO } from "../src/model/Types"
 import { AuthenticatorMock } from "./mock/AuthenticatorMock"
-import { IdGeneratorMock } from "./mock/idGeneratorMock"
+import { IdGeneratorMock } from "./mock/IdGeneratorMock"
 import { ShowDataBaseMock } from "./mock/ShowDataMock"
 import { showInputsValidationMock } from "./mock/ShowInputsValidation"
 
