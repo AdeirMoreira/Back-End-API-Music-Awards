@@ -11,6 +11,9 @@ Content-Type: application/json
 
 ### LOGIN
 
+###
+# @name login
+
 POST http://localhost:3003/users/login
 Content-Type: application/json
 
@@ -21,16 +24,39 @@ Content-Type: application/json
 
 ###
 
+###
+@token = {{login.response.body.token}}
+
+
+
 POST http://localhost:3003/bands/create
-Authorization: 1
+Authorization: {{token}}
 Content-Type: application/json
 
 {
-    "name": "Calcinha Preta",
+    "name": "Os Barões da Pisadinha",
     "music_genre": "Forró",
-    "responsible": "Adeire"
+    "responsible": " Rodrigo Araujo Neves"
 }
 
 ###
 GET http://localhost:3003/bands?name=Calcinha Preta
-Authorization: 1
+Authorization: {{token}}
+
+###
+POST http://localhost:3003/show/register
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+	"week_day":"sábado", 
+	"start_time": 8, 
+    "end_time": 11,
+    "band_id":"2e907310-0c36-448d-a15f-44e34676751d"
+}
+
+###
+GET http://localhost:3003/show/sexta
+Authorization: {{token}}
+
+

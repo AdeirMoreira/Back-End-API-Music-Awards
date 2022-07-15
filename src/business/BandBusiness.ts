@@ -13,7 +13,6 @@ export default class BandBusiness {
   createBand = async (input: InputCreateBandDTO) => {
     try {
       const { name, music_genre, responsible } = input;
-      console.log(input)
       if (!name || !music_genre || !responsible) {
         throw new CustomError( 422, "Invalid Fields");
       }
