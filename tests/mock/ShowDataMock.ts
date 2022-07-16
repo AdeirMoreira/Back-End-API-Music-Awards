@@ -17,13 +17,13 @@ export class ShowDataBaseMock extends BaseDatabase{
     //         )
     //     }
 
-    // public async insert(show:Show):Promise<void> {}
+    public async insert(show:Show):Promise<void> {}
 
-    // public async getAll():Promise<Show[] | []> {
-    //     return [showMock1,showMock2]
-    // }
+    public async getAll():Promise<Show[] | []> {
+        return [showMock1,showMock2]
+    }
 
-    // public async getByDay(week_day:string):Promise<DBShow[] | []> {
-    //     return [DBShowMock1,DBShowMock2]
-    // }
+    public async getByDay(week_day:string):Promise<DBShow[] | []> {
+        return [DBShowMock1,DBShowMock2]
+    }
 }

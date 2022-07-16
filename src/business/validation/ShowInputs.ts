@@ -9,7 +9,6 @@ export class showInputsValidation  {
         this.starShowTime(input.start_time,input.end_time)
         this.endShowTime(input.end_time)
         this.bandId(input.band_id)
-        
     }
 
     dayShows = (input:ShowsDayDTO) => {

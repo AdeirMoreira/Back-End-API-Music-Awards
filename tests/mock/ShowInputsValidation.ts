@@ -1,4 +1,5 @@
-import { RegisterShowDTO, ShowsDayDTO } from "../../src/model/Types";
+import { CustomError } from "../../src/business/errors/CustomError";
+import { RegisterShowDTO, ShowsDayDTO, WEEK_DAY } from "../../src/model/Types";
 
 export class showInputsValidationMock {
     register(input:RegisterShowDTO) {
@@ -13,6 +14,7 @@ export class showInputsValidationMock {
         this.token(input.token)
         this.week_day(input.week_day.toUpperCase())
     }
+
 
     private week_day = (week_day:string) => {}
 
