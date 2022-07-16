@@ -1,8 +1,9 @@
 import {ShowBusiness} from "../src/business/ShowBusiness"
 import { showInputsValidation } from "../src/business/validation/ShowInputs"
+import { ShowDataBase } from "../src/data/ShowData"
 import { RegisterShowDTO } from "../src/model/Types"
 import { AuthenticatorMock } from "./mock/AuthenticatorMock"
-import { IdGeneratorMock } from "./mock/idGeneratorMock"
+import { IdGeneratorMock } from "./mock/IdGeneratorMock"
 import { ShowDataBaseMock } from "./mock/ShowDataMock"
 import { showInputsValidationMock } from "./mock/ShowInputsValidation"
 
@@ -146,17 +147,92 @@ describe('testing class showInputsValidation ', () => {
             expect.assertions(2)
         }
     })
+    // test('test corret inputs', async () => {
+    //     const inputs:RegisterShowDTO = {
+    //         token:'token',
+    //         week_day:'SÁBADO',
+    //         start_time:8,
+    //         end_time:10,
+    //         band_id:'band_id'
+    //     }
+    //     try {
+    //         const insert =  jest.fn(
+    //             (input:RegisterShowDTO) => dataValidation.register(input)
+    //         )
+    //         expect(insert(inputs)).not.toThrow()
+    //         expect(insert(inputs)).toBeUndefined()
+    //     } catch (error:any) {
+    //         console.log(error.message)
+    //     } finally {
+    //         expect.assertions(2)
+    //     }
+    // })
 })
 
-// const ShowBussinessMock = new ShowBusiness(
-//     new IdGeneratorMock(),
-//     new AuthenticatorMock(),
-//     new ShowDataBaseMock(),
-//     new showInputsValidationMock()
-// )
+const ShowBusinessMock = new ShowBusiness(
+    new IdGeneratorMock(),
+    new AuthenticatorMock(),
+    new ShowDataBaseMock() as ShowDataBase,
+    new showInputsValidationMock() as unknown as showInputsValidation
+)
 
-// describe('Testing class ShowBussiness', () => {
-//     test('', => {
+describe('Testing class ShowBussiness', () => {
+    test('Testing busyTime on start_time', async ()=> {
+        const input:RegisterShowDTO = {
+            token:'token',
+            week_day:'SÁBADO',
+            start_time:17,
+            end_time:20,
+            band_id:'band_id'
+        }
+        try {
+            await ShowBusinessMock.register(input)
+        } catch (error:any) {
+            expect(error.statusCode).toEqual(409)
+            expect(error.message).toEqual('Já há um show programado para o horário das 15 as 18')
+        }
+        finally{
+            expect.assertions(2)
+        }
+    })
 
-//     })
-// })
+    test('Testing busyTime on end_time', async ()=> {
+        const input:RegisterShowDTO = {
+            token:'token',
+            week_day:'SÁBADO',
+            start_time:20,
+            end_time:17,
+            band_id:'band_id'
+        }
+        try {
+            await ShowBusinessMock.register(input)
+        } catch (error:any) {
+            expect(error.statusCode).toEqual(409)
+            expect(error.message).toEqual('Já há um show programado para o horário das 15 as 18')
+        }
+        finally{
+            expect.assertions(2)
+        }
+    })
+
+    test('Testing showdata corret', async ()=> {
+        const input:RegisterShowDTO = {
+            token:'token',
+            week_day:'SÁBADO',
+            start_time:10,
+            end_time:15,
+            band_id:'band_id'
+        }
+        try {
+            const insert =  jest.fn(
+                (input:RegisterShowDTO) => ShowBusinessMock.register(input)
+            )
+            await expect(insert(input)).resolves.not.toThrow()
+            await expect(insert(input)).resolves.toBeUndefined()
+        } catch (error:any) {
+            console.log(error.message)
+        }finally{
+            expect.assertions(2)
+        }
+    })
+})
