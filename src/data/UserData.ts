@@ -1,39 +1,74 @@
-import  BaseDatabase  from "./BaseDatabase";
+import BaseDataBase from "./BaseDatabase";
 import { User } from "../model/User";
 
-export class UserDatabase extends BaseDatabase {
+export class UserDatabase extends BaseDataBase {
 
-  private static TABLE_NAME = "lama_users";
+   protected tableName: string = "User_Arq";
 
-  public async createUser(
-    id: string,
-    email: string,
-    name: string,
-    password: string,
-    role: string
-  ): Promise<void> {
-    try {
-      await BaseDatabase.connection()
-        .insert({
-          id,
-          email,
-          name,
-          password,
-          role
-        })
-        .into(UserDatabase.TABLE_NAME);
-    } catch (error:any) {
-      throw new Error(error.sqlMessage || error.message);
-    }
-  }
+   private toModel(dbModel?: any): User | undefined {
+      return (
+         dbModel &&
+         new User(
+            dbModel.id,
+            dbModel.name,
+            dbModel.email,
+            dbModel.password,
+            dbModel.role
+         )
+      );
+   }
 
-  public async getUserByEmail(email: string): Promise<User> {
-    const result = await BaseDatabase.connection()
-      .select("*")
-      .from(UserDatabase.TABLE_NAME)
-      .where({ email });
+   public async createUser(user: User): Promise<void> {
+      try {
+         await BaseDataBase.connection.raw(`
+            INSERT INTO ${this.tableName} (id, name, email, password, role)
+            VALUES (
+            '${user.getId()}', 
+            '${user.getName()}', 
+            '${user.getEmail()}',
+            '${user.getPassword()}', 
+            '${user.getRole()}'
+            )`
+         );
+      } catch (error: any) {
+         throw new Error(error.sqlMessage || error.message)
+      }
+   }
 
-    return User.toUserModel(result[0]);
-  }
+   public async getUserByEmail(email: string): Promise<User | undefined> {
+      try {
+         const result = await BaseDataBase.connection.raw(`
+            SELECT * from ${this.tableName} WHERE email = '${email}'
+         `);
+         return this.toModel(result[0][0]);
+      } catch (error: any) {
+         throw new Error(error.sqlMessage || error.message)
+      }
+   }
 
+   public async getUserById(id: string): Promise<User | undefined> {
+      try {
+         const result = await BaseDataBase.connection.raw(`
+            SELECT * from ${this.tableName} WHERE id = '${id}'
+         `);
+         return this.toModel(result[0][0]);
+      } catch (error: any) {
+         throw new Error(error.sqlMessage || error.message)
+      }
+   }
+
+   public async getAllUsers(): Promise<User[]> {
+      try {
+         const result = await BaseDataBase.connection.raw(`
+            SELECT * from ${this.tableName}
+         `);
+         return result[0].map((res: any) => {
+            return this.toModel(res);
+         });
+      } catch (error: any) {
+         throw new Error(error.sqlMessage || error.message)
+      }
+   }
 }
+
+export default new UserDatabase() 
