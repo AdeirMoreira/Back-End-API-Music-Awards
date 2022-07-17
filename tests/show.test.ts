@@ -23,7 +23,7 @@ describe('testing class showInputsValidation ', () => {
             dataValidation.register(inputs)
         } catch (error:any) {
             expect(error.message).toEqual('Token inválido!')
-            expect(error.statusCode).toEqual(401)
+            expect(error.statusCode).toStrictEqual(401)
         } finally {
             expect.assertions(2)
         }
@@ -147,26 +147,30 @@ describe('testing class showInputsValidation ', () => {
             expect.assertions(2)
         }
     })
-    // test('test corret inputs', async () => {
-    //     const inputs:RegisterShowDTO = {
-    //         token:'token',
-    //         week_day:'SÁBADO',
-    //         start_time:8,
-    //         end_time:10,
-    //         band_id:'band_id'
-    //     }
-    //     try {
-    //         const insert =  jest.fn(
-    //             (input:RegisterShowDTO) => dataValidation.register(input)
-    //         )
-    //         expect(insert(inputs)).not.toThrow()
-    //         expect(insert(inputs)).toBeUndefined()
-    //     } catch (error:any) {
-    //         console.log(error.message)
-    //     } finally {
-    //         expect.assertions(2)
-    //     }
-    // })
+    test('test corret inputs', async () => {
+        const inputs:RegisterShowDTO = {
+            token:'token',
+            week_day:'SÁBADO',
+            start_time:8,
+            end_time:10,
+            band_id:'band_id'
+        }
+        try {
+            const insert =  jest.fn(
+                (input:RegisterShowDTO) => dataValidation.register(input)
+            )
+            const result = insert(inputs)
+            expect(insert).toBeCalled()
+            expect(insert).toBeCalledWith(inputs)
+            expect(result).toBeUndefined()
+            expect(insert).toHaveReturned()
+            
+        } catch (error:any) {
+            console.log(error.message)
+        } finally {
+            expect.assertions(4)
+        }
+    })
 })
 
 const ShowBusinessMock = new ShowBusiness(
@@ -217,17 +221,17 @@ describe('Testing class ShowBussiness', () => {
 
     test('Testing showdata corret', async ()=> {
         const input:RegisterShowDTO = {
-            token:'token',
+            token:'TOKEN',
             week_day:'SÁBADO',
-            start_time:10,
-            end_time:15,
-            band_id:'band_id'
+            start_time:8,
+            end_time:12,
+            band_id:'BAND_ID'
         }
         try {
             const insert =  jest.fn(
                 (input:RegisterShowDTO) => ShowBusinessMock.register(input)
             )
-            await expect(insert(input)).resolves.not.toThrow()
+            await expect(insert(input)).resolves.not.toThrowError()
             await expect(insert(input)).resolves.toBeUndefined()
         } catch (error:any) {
             console.log(error.message)
