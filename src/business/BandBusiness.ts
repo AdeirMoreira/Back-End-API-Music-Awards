@@ -3,8 +3,9 @@ import Band, { InputCreateBandDTO, InputSelectBandDTO } from "../model/Band";
 import { Authenticator } from "../services/Authenticator";
 import IdGenerator from "../services/IdGenerator";
 import { CustomError } from "./errors/CustomError";
+import { UserRole } from "../model/User";
 
-export default class BandBusiness {
+export class BandBusiness {
   constructor(
     private bandData: BandData,
     private idGenerator: IdGenerator,
@@ -12,12 +13,18 @@ export default class BandBusiness {
   ) {}
   createBand = async (input: InputCreateBandDTO) => {
     try {
-      const { name, music_genre, responsible } = input;
+      const { name, music_genre, responsible, token } = input;
       if (!name || !music_genre || !responsible) {
         throw new CustomError( 422, "Invalid Fields");
       }
+      if(!token){
+        throw new CustomError(409, "Invalid Token")
+      }
       const id = this.idGenerator.generateId();
       const tokenData = this.authenticator.getTokenData(input.token);
+      if(tokenData.role === UserRole.NORMAL){
+        throw new CustomError(401, "Only Admin Users Can Register New Bands")
+      }
       const band = new Band(id, name, music_genre, responsible);
       await this.bandData.insertBand(band);
     } catch (error: any) {
@@ -44,3 +51,9 @@ export default class BandBusiness {
     }
   };
 }
+
+export default new BandBusiness(
+  new BandData(),
+  new IdGenerator(),
+  new Authenticator()
+  )
