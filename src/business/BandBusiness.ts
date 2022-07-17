@@ -17,7 +17,6 @@ export class BandBusiness {
     try {
       const { name, music_genre, responsible, token } = input;
       this.bandInputsValidation.createBand(input);
-      console.log(input)
       const tokenData = this.authenticator.getTokenData(token);
 
       if (tokenData.role === USER_ROLES.NORMAL) {
@@ -45,10 +44,10 @@ export class BandBusiness {
       this.authenticator.getTokenData(token);
 
       const band = await this.bandData.selectByIdOrName(id, name);
-
+      console.log(band)
       return band;
     } catch (error: any) {
-      if (!error.message) {
+      if (error.message==="") {
         throw new CustomError(404, "Banda não encontrada");
       }
       if (error.message.includes("jwt")) {

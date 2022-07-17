@@ -8,10 +8,13 @@ export default class BandDataMock {
     id: string,
     name: string
   ): Promise<FindByIdOrNameResponse> => {
-    if (id) {
+    console.log(id, name)
+    if (id === "band1") {
       return band1;
-    } else {
+    } else if(name === "band2") {
       return band2;
+    }else{
+      throw new Error(undefined)
     }
   };
 }

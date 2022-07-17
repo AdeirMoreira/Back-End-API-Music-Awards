@@ -3,12 +3,11 @@ import Band, { FindByIdOrNameResponse } from "../model/Band";
 import BaseDatabase from "./BaseDatabase";
 
 export default class BandData extends BaseDatabase {
-
   insertBand = async (band: Band) => {
     try {
       await BandData.connection("lama_bands").insert(band);
-    } catch (error:any) {
-        throw new CustomError(500, error.sqlMessage);
+    } catch (error: any) {
+      throw new CustomError(500, error.sqlMessage);
     }
   };
   selectByIdOrName = async (
@@ -18,16 +17,22 @@ export default class BandData extends BaseDatabase {
     try {
       let result: FindByIdOrNameResponse[] = [];
       if (id) {
-            result = await BandData.connection("lama_bands")
+        result = await BandData.connection("lama_bands")
           .select("*")
           .where("id", "=", id);
-          
       } else {
-            result = await BandData.connection("lama_bands")
+        result = await BandData.connection("lama_bands")
           .select("*")
           .where("name", "=", name);
       }
-
+      if (
+        !result[0].id ||
+        !result[0].music_genre ||
+        !result[0].name ||
+        !result[0].responsible
+      ) {
+        throw new CustomError(404, "Banda não encontrada")
+      }
       const band: FindByIdOrNameResponse = {
         id: result[0].id,
         name: result[0].name,
@@ -35,7 +40,7 @@ export default class BandData extends BaseDatabase {
         responsible: result[0].responsible,
       };
       return band;
-    } catch (error:any) {
+    } catch (error: any) {
       throw new CustomError(500, error.sqlMessage);
     }
   };
