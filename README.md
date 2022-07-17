@@ -18,7 +18,7 @@
 - Realiza o cadastro de bandas e shows.
 - Realiza a visualização de detalhes da banda e show.
 
-<h2 id="documentação">🚨 Documentação do Postman</h2>
+<h2 id="documentação">📃 Documentação do Postman</h2>
 
 - [Postman]()
 
