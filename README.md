@@ -1,5 +1,3 @@
-# Labenu Music Awards
-
 <p>
 <a href="#sobre">Sobre</a> |
 <a href="#orientacoes">Orientações</a> |
@@ -9,9 +7,9 @@
 <a href="#desenvolvedores">Desenvolvedores</a>
 </p>
 
-<h1 id="sobre">📕 Projeto LaBook</h1>
+<h1 id="sobre">📕 Projeto Labenu Music Award</h1>
 
-<p>o **LAMA**, *Labenu Musical Awards*, um festival  com várias bandas famosas para a formatura da sua turma e, no final, vocês podem eleger a banda que mais gostaram! Entretanto, na opinião dele, vocês só serão merecedores se entregarem um sistema impecável que permita o gerenciamento completo desses shows.</p>
+<p>o LAMA, *Labenu Musical Awards*, um festival  com várias bandas famosas para a formatura da sua turma e, no final, vocês podem eleger a banda que mais gostaram! Entretanto, na opinião dele, vocês só serão merecedores se entregarem um sistema impecável que permita o gerenciamento completo desses shows.</p>
 
 <h2 id="orientacoes">🚨 Orientações para acesso</h2>
 
