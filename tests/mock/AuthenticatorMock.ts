@@ -14,10 +14,11 @@ export class AuthenticatorMock {
 
     public getTokenData(token: string): AuthenticationData {
         let data = {}
+        console.log(token)
         if(token.includes("NORMAL")){
-            data = {id:'id', role:UserRole.NORMAL};
+            data = {id:'id', role:USER_ROLES.NORMAL};
         }else{
-            data = {id:'id', role:UserRole.ADMIN}
+            data = {id:'id', role:USER_ROLES.ADMIN}
         }
         return data as AuthenticationData;
     }
