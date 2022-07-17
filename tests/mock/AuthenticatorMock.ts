@@ -1,3 +1,4 @@
+import { CustomError } from "../../src/business/errors/CustomError";
 import { USER_ROLES } from "../../src/model/User";
 
 
@@ -13,8 +14,10 @@ export class AuthenticatorMock {
 
 
     public getTokenData(token: string): AuthenticationData {
+        if(!token){
+            throw new Error("jwt")
+        }
         let data = {}
-        console.log(token)
         if(token.includes("NORMAL")){
             data = {id:'id', role:USER_ROLES.NORMAL};
         }else{
