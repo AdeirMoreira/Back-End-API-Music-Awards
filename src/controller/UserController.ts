@@ -1,46 +1,45 @@
 import { Request, Response } from "express";
-import { UserInputDTO, LoginInputDTO} from "../model/User";
-import { UserBusiness } from "../business/UserBusiness";
-import  BaseDatabase  from "../data/BaseDatabase";
+import userBusiness from "../business/UserBusiness";
 
 export class UserController {
-    async signup(req: Request, res: Response) {
-        try {
 
-            const input: UserInputDTO = {
-                email: req.body.email,
-                name: req.body.name,
-                password: req.body.password,
-                role: req.body.role
-            }
+   public async signup(req: Request, res: Response) {
+      try {
+         const { name, role, email, password } = req.body
+         const result = await userBusiness.signup(
+            name,
+            email,
+            password,
+            role
+         );
+         res.status(200).send(result);
+      } catch (error: any) {
+         const { statusCode, message } = error
+         res.status(statusCode || 400).send({ message });
+      }
+   }
 
-            const userBusiness = new UserBusiness();
-            const token = await userBusiness.createUser(input);
+   public async login(req: Request, res: Response) {
+      try {
+         const { email, password } = req.body
+         const result = await userBusiness.login(email, password);
+         res.status(200).send(result);
+      } catch (error: any) {
+         const { statusCode, message } = error
+         res.status(statusCode || 400).send({ message });
+      }
+   }
 
-            res.status(200).send({ token });
-
-        } catch (error: any) {
-            res.status(error.statusCode || 400).send({ error: error.message });
-        }
-    }
-
-    async login(req: Request, res: Response) {
-
-        try {
-
-            const loginData: LoginInputDTO = {
-                email: req.body.email,
-                password: req.body.password
-            };
-
-            const userBusiness = new UserBusiness();
-            const token = await userBusiness.getUserByEmail(loginData);
-
-            res.status(200).send({ token });
-
-        } catch (error:any) {
-            res.status(error.statusCode || 400).send({ error: error.message });
-        }
-    }
-
+   public async getUserById(req: Request, res: Response){
+      try{
+         const id: string = req.params.id;
+         const user = userBusiness.getUserById(id);
+         res.status(200).send({message:"Sucess", user});
+      } catch(error: any){
+         const { statusCode, message} = error
+         res.status(statusCode || 400).send({message});
+      }
+   }
 }
+
+export default new UserController() 

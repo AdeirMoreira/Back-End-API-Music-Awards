@@ -3,11 +3,10 @@ import Band, { FindByIdOrNameResponse } from "../model/Band";
 import BaseDatabase from "./BaseDatabase";
 
 export default class BandData extends BaseDatabase {
-  protected TABLE_NAME = "lama_bands";
 
   insertBand = async (band: Band) => {
     try {
-      await BandData.connection(this.TABLE_NAME).insert(band);
+      await BandData.connection("lama_bands").insert(band);
     } catch (error:any) {
         throw new CustomError(500, error.sqlMessage);
     }
@@ -16,17 +15,15 @@ export default class BandData extends BaseDatabase {
     id: string,
     name: string
   ): Promise<FindByIdOrNameResponse> => {
-    console.log(id)
-    console.log(name)
     try {
       let result: FindByIdOrNameResponse[] = [];
       if (id) {
-            result = await BandData.connection(this.TABLE_NAME)
+            result = await BandData.connection("lama_bands")
           .select("*")
           .where("id", "=", id);
           
       } else {
-            result = await BandData.connection(this.TABLE_NAME)
+            result = await BandData.connection("lama_bands")
           .select("*")
           .where("name", "=", name);
       }

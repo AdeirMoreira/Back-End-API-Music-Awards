@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
-import BandBusiness from "../business/BandBusiness";
+import bandBusiness, {BandBusiness} from "../business/BandBusiness";
 import { CustomError } from "../business/errors/CustomError";
 import { InputCreateBandDTO, InputSelectBandDTO } from "../model/Band";
 
-export default class BandController {
-  constructor(private bandBusiness: BandBusiness) {}
+export class BandController {
+  constructor(
+    private bandBusiness: BandBusiness
+    ) {}
   createBand = async (req: Request, res: Response) => {
     const input: InputCreateBandDTO = {
       name: req.body.name,
@@ -33,3 +35,5 @@ export default class BandController {
     }
   }
 }
+
+export default new BandController(bandBusiness)
