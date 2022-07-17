@@ -1,5 +1,6 @@
 import BaseDataBase from "./BaseDatabase";
 import { User } from "../model/User";
+import { CustomError } from "../business/errors/CustomError";
 
 export class UserDatabase extends BaseDataBase {
 
@@ -31,6 +32,9 @@ export class UserDatabase extends BaseDataBase {
             )`
          );
       } catch (error: any) {
+         if (error.message.includes("key 'email'")) {
+            throw new CustomError(409, "Email already in use")
+         }
          throw new Error(error.sqlMessage || error.message)
       }
    }

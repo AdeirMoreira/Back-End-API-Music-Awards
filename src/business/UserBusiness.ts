@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserData";
-import { stringToUserRole, User } from "../model/User";
+import { stringToUserRole, User, USER_ROLES } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import IdGenerator from "../services/IdGenerator";
@@ -18,7 +18,7 @@ export class UserBusiness {
       name: string,
       email: string,
       password: string,
-      role: string
+      role: USER_ROLES
    ) {
       try {
          if (!name || !email || !password || !role) {
@@ -41,16 +41,12 @@ export class UserBusiness {
             new User(id, name, email, cypherPassword, stringToUserRole(role))
          );
 
-         const accessToken = this.tokenGenerator.generate({
+         const token = this.tokenGenerator.generate({
             id,
             role,
          });
-         return { accessToken };
+         return { token };
       } catch (error: any) {
-         if (error.message.includes("key 'email'")) {
-            throw new CustomError(409, "Email already in use")
-         }
-
          throw new CustomError(error.statusCode, error.message)
       }
 
@@ -78,12 +74,12 @@ export class UserBusiness {
             throw new CustomError(401, "Invalid credentials");
          }
 
-         const accessToken = this.tokenGenerator.generate({
+         const token = this.tokenGenerator.generate({
             id: user.getId(),
             role: user.getRole(),
          });
 
-         return { accessToken };
+         return { token };
       } catch (error: any) {
          throw new CustomError(error.statusCode, error.message)
       }

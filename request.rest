@@ -4,8 +4,8 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-	"name": "Eric",
-	"email": "eric@dev.com",
+	"name": "João",
+	"email": "joao@dev.com",
 	"password": "123456",
 	"role": "ADMIN"
 }
@@ -19,7 +19,7 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-	"email": "adeir@dev.com",
+	"email": "joao@dev.com",
 	"password": "123456"
 }
 
@@ -35,13 +35,13 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
-    "name": "Os Barões da Pisadinha",
-    "music_genre": "Forró",
-    "responsible": " Rodrigo Araujo Neves"
+    "name": "Slipknot",
+    "music_genre": "Lambada",
+    "responsible": "Padre Marcelo Rossi"
 }
 
 ###
-GET http://localhost:3003/bands?name=Calcinha Preta
+GET http://localhost:3003/bands?name=Cacinha Preta
 Authorization: {{token}}
 
 ###

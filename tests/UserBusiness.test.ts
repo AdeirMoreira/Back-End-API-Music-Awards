@@ -1,113 +1,113 @@
-import { UserBusiness } from "../src/business/UserBusiness"
-import { UserDatabase } from "../src/data/UserData"
-import { AuthenticatorMock } from "./mock/AuthenticatorMock"
-import { HashMockGenerator } from "./mock/HashGeneretorMock"
-import { IdGeneratorMock } from "./mock/IdGeneratorMock"
-import { UserDatabaseMock } from "./mock/UserDatabaseMock"
+// import { UserBusiness } from "../src/business/UserBusiness"
+// import { UserDatabase } from "../src/data/UserData"
+// import { AuthenticatorMock } from "./mock/AuthenticatorMock"
+// import { HashMockGenerator } from "./mock/HashGeneretorMock"
+// import { IdGeneratorMock } from "./mock/IdGeneratorMock"
+// import { UserDatabaseMock } from "./mock/UserDatabaseMock"
 
 
-const userBusinessMock = new UserBusiness(
-    new IdGeneratorMock(),
-    new HashMockGenerator(),
-    new AuthenticatorMock(),
-    new UserDatabaseMock() as UserDatabase
-)
+// const userBusinessMock = new UserBusiness(
+//     new IdGeneratorMock(),
+//     new HashMockGenerator(),
+//     new AuthenticatorMock(),
+//     new UserDatabaseMock() as UserDatabase
+// )
 
-describe("Testando o signup", () => {
-    test("Erro de nome", async () => {
-        try {
-            await userBusinessMock.signup("", "mariana@dev.com", "123456", "NORMAL")
-        } catch(error: any) {
-            expect(error.message).toEqual("Missing input")
-            expect(error.statusCode).toBe(422)
-        } finally {
-            expect.assertions(2)
-        }
-    })
+// describe("Testando o signup", () => {
+//     test("Erro de nome", async () => {
+//         try {
+//             await userBusinessMock.signup("", "mariana@dev.com", "123456", "NORMAL")
+//         } catch(error: any) {
+//             expect(error.message).toEqual("Missing input")
+//             expect(error.statusCode).toBe(422)
+//         } finally {
+//             expect.assertions(2)
+//         }
+//     })
 
-    test("Erro de email", async () => {
-        try {
-            await userBusinessMock.signup("Mariana", "marianadev.com", "123456", "NORMAL")
-        } catch(error: any) {
-            expect(error.message).toEqual("Invalid email")
-            expect(error.statusCode).toBe(422)
-        } finally {
-            expect.assertions(2)
-        }
-    })
+//     test("Erro de email", async () => {
+//         try {
+//             await userBusinessMock.signup("Mariana", "marianadev.com", "123456", "NORMAL")
+//         } catch(error: any) {
+//             expect(error.message).toEqual("Invalid email")
+//             expect(error.statusCode).toBe(422)
+//         } finally {
+//             expect.assertions(2)
+//         }
+//     })
 
-    test("Error de senha", async () => {
-        try {
-            await userBusinessMock.signup("Mariana", "mariana@dev.com", "12345", "NORMAL")
-        } catch(error: any) {
-            expect(error.message).toEqual("Invalid password")
-            expect(error.statusCode).toBe(422)
-        } finally {
-            expect.assertions(2)
-        }
-    })
+//     test("Error de senha", async () => {
+//         try {
+//             await userBusinessMock.signup("Mariana", "mariana@dev.com", "12345", "NORMAL")
+//         } catch(error: any) {
+//             expect(error.message).toEqual("Invalid password")
+//             expect(error.statusCode).toBe(422)
+//         } finally {
+//             expect.assertions(2)
+//         }
+//     })
 
-    test("Erro de role", async () => {
-        try {
-            await userBusinessMock.signup("Mariana", "mariana@dev.com", "123456", "batata")
-        } catch(error: any) {
-            expect(error.message).toEqual("Invalid user role")
-            expect(error.statusCode).toBe(422)
-        } finally {
-            expect.assertions(2)
-        }
-    })
+//     test("Erro de role", async () => {
+//         try {
+//             await userBusinessMock.signup("Mariana", "mariana@dev.com", "123456", "batata")
+//         } catch(error: any) {
+//             expect(error.message).toEqual("Invalid user role")
+//             expect(error.statusCode).toBe(422)
+//         } finally {
+//             expect.assertions(2)
+//         }
+//     })
 
-    test("Sucesso no cadastro", async () => {
-        try {
-            const {accessToken} = await userBusinessMock.signup("Mariana", "Mariana@dev.com", "123456", "NORMAL")
-            expect(accessToken).toEqual("token")
-        } catch(error: any) {
-            console.log(error)
-        } finally {
-            expect.assertions(1)
-        }
-    })
-})
-
-
-describe("Testando o login", () => {
-    test("Error de email", async () => {
-        try {
-            await userBusinessMock.login("batata@dev.com", "123456")
-        } catch(error: any) {
-            // console.log(error)
-            expect(error.message).toEqual("Invalid credentials")
-            expect(error.statusCode).toBe(401)
-        } finally {
-            expect.assertions(2)
-        }
-    })
-
-    test("Error de senha", async () => {
-        try {
-            await userBusinessMock.login("mariana@dev.com", "123457")
-        } catch(error: any) {
-            // console.log(error)
-            expect(error.message).toEqual("Invalid credentials")
-            expect(error.statusCode).toBe(401)
-        } finally {
-            expect.assertions(2)
-        }
-    })
+//     test("Sucesso no cadastro", async () => {
+//         try {
+//             const {accessToken} = await userBusinessMock.signup("Mariana", "Mariana@dev.com", "123456", "NORMAL")
+//             expect(accessToken).toEqual("token")
+//         } catch(error: any) {
+//             console.log(error)
+//         } finally {
+//             expect.assertions(1)
+//         }
+//     })
+// })
 
 
-    test("Sucesso no login", async () => {
-        try {
-            const {accessToken} = await userBusinessMock.login("mariana@dev.com", "123456")
-            expect(accessToken).toEqual("token")
+// describe("Testando o login", () => {
+//     test("Error de email", async () => {
+//         try {
+//             await userBusinessMock.login("batata@dev.com", "123456")
+//         } catch(error: any) {
+//             // console.log(error)
+//             expect(error.message).toEqual("Invalid credentials")
+//             expect(error.statusCode).toBe(401)
+//         } finally {
+//             expect.assertions(2)
+//         }
+//     })
 
-        } catch(error: any) {
-            console.log(error)
-            // expect(error.message).toEqual("Invalid credentials")
-            // expect(error.statusCode).toBe(401)
-        } finally {
-            expect.assertions(1)
-        }
-    })
-})
+//     test("Error de senha", async () => {
+//         try {
+//             await userBusinessMock.login("mariana@dev.com", "123457")
+//         } catch(error: any) {
+//             // console.log(error)
+//             expect(error.message).toEqual("Invalid credentials")
+//             expect(error.statusCode).toBe(401)
+//         } finally {
+//             expect.assertions(2)
+//         }
+//     })
+
+
+//     test("Sucesso no login", async () => {
+//         try {
+//             const {accessToken} = await userBusinessMock.login("mariana@dev.com", "123456")
+//             expect(accessToken).toEqual("token")
+
+//         } catch(error: any) {
+//             console.log(error)
+//             // expect(error.message).toEqual("Invalid credentials")
+//             // expect(error.statusCode).toBe(401)
+//         } finally {
+//             expect.assertions(1)
+//         }
+//     })
+// })
