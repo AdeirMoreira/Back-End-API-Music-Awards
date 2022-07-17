@@ -3,7 +3,7 @@ export class HashMockGenerator {
         return "hash"
     }
 
-    public compareHash = async (s: string, hash: string): Promise<boolean> => {
+    public compare = async (s: string, hash: string): Promise<boolean> => {
         return s === hash
     }
 } 

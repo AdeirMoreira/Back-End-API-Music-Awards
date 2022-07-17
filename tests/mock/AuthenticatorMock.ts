@@ -1,8 +1,9 @@
-import { UserRole } from "../../src/model/User";
+import { USER_ROLES } from "../../src/model/User";
+
 
 export type AuthenticationData = {
     id:string,
-    role:UserRole
+    role:USER_ROLES
     }
 
 export class AuthenticatorMock {
@@ -11,7 +12,7 @@ export class AuthenticatorMock {
     }
 
     public getTokenData(token: any): AuthenticationData {
-        const data = {id:'id', role:UserRole.ADMIN};
+        const data = {id:'id', role:USER_ROLES.ADMIN};
         return data as AuthenticationData;
     }
 }

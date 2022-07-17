@@ -1,43 +1,112 @@
-import { UserInputDTO, LoginInputDTO } from "../model/User";
 import { UserDatabase } from "../data/UserData";
-import  IdGenerator  from "../services/IdGenerator";
-import { HashManager } from "../services/HashManager";
+import { stringToUserRole, User } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
+import { HashManager } from "../services/HashManager";
+import IdGenerator from "../services/IdGenerator";
+import { CustomError } from "./errors/CustomError";
+
 
 export class UserBusiness {
+   constructor(
+      private idGenerator: IdGenerator,
+      private hashGenerator: HashManager,
+      private tokenGenerator: Authenticator,
+      private userDatabase: UserDatabase
+   ){}
 
-    async createUser(user: UserInputDTO) {
+   public async signup(
+      name: string,
+      email: string,
+      password: string,
+      role: string
+   ) {
+      try {
+         if (!name || !email || !password || !role) {
+            throw new CustomError(422, "Missing input");
+         }
 
-        const idGenerator = new IdGenerator();
-        const id = idGenerator.generateId();
+         if (email.indexOf("@") === -1) {
+            throw new CustomError(422, "Invalid email");
+         }
 
-        const hashManager = new HashManager();
-        const hashPassword = await hashManager.hash(user.password);
+         if (password.length < 6) {
+            throw new CustomError(422, "Invalid password");
+         }
 
-        const userDatabase = new UserDatabase();
-        await userDatabase.createUser(id, user.email, user.name, hashPassword, user.role);
+         const id = this.idGenerator.generateId();
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generate({ id, role: user.role });
+         const cypherPassword = await this.hashGenerator.hash(password);
 
-        return accessToken;
-    }
+         await this.userDatabase.createUser(
+            new User(id, name, email, cypherPassword, stringToUserRole(role))
+         );
 
-    async getUserByEmail(user: LoginInputDTO) {
+         const accessToken = this.tokenGenerator.generate({
+            id,
+            role,
+         });
+         return { accessToken };
+      } catch (error: any) {
+         if (error.message.includes("key 'email'")) {
+            throw new CustomError(409, "Email already in use")
+         }
 
-        const userDatabase = new UserDatabase();
-        const userFromDB = await userDatabase.getUserByEmail(user.email);
+         throw new CustomError(error.statusCode, error.message)
+      }
 
-        const hashManager = new HashManager();
-        const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
+   }
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generate({ id: userFromDB.getId(), role: userFromDB.getRole() });
+   public async login(email: string, password: string) {
 
-        if (!hashCompare) {
-            throw new Error("Invalid Password!");
-        }
+      try {
+         if (!email || !password) {
+            throw new CustomError(422, "Missing input");
+         }
 
-        return accessToken;
-    }
+         const user = await this.userDatabase.getUserByEmail(email);
+
+         if (!user) {
+            throw new CustomError(401, "Invalid credentials");
+         }
+
+         const isPasswordCorrect = await this.hashGenerator.compare(
+            password,
+            user.getPassword()
+         );
+
+         if (!isPasswordCorrect) {
+            throw new CustomError(401, "Invalid credentials");
+         }
+
+         const accessToken = this.tokenGenerator.generate({
+            id: user.getId(),
+            role: user.getRole(),
+         });
+
+         return { accessToken };
+      } catch (error: any) {
+         throw new CustomError(error.statusCode, error.message)
+      }
+   }
+
+   public async getUserById(id: string){
+      const user = await this.userDatabase.getUserById(id);
+      console.log(user)
+      if(!user){
+         throw new CustomError(404, "User not found");
+      };
+      return {
+         id: user.getId(),
+         name: user.getName(),
+         email: user.getEmail(),
+         role: user.getRole(),
+      };
+   };
 }
+
+export default new UserBusiness( 
+   new IdGenerator(),
+   new HashManager(),
+   new Authenticator(),
+   new UserDatabase()
+);  

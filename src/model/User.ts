@@ -1,83 +1,47 @@
-export class User{
-    constructor(
-    private id: string,
-    private name: string,
-    private email: string,
-    private password: string,
-    private role: UserRole
-    ){}
+import { CustomError } from "../business/errors/CustomError";
 
-    getId(){
-        return this.id;
-    }
+export class User {
+   constructor(
+      private id: string,
+      private name: string,
+      private email: string,
+      private password: string,
+      private role: USER_ROLES
+   ) { }
 
-    getName(){
-        return this.name
-    }
+   public getId(): string {
+      return this.id;
+   }
 
-    getEmail(){
-        return this.email;
-    }
+   public getName(): string {
+      return this.name;
+   }
 
-    getPassword(){
-        return this.password;
-    }
+   public getEmail(): string {
+      return this.email;
+   }
 
-    getRole(){
-        return this.role;
-    }
+   public getPassword(): string {
+      return this.password;
+   }
 
-    setId(id: string){
-        this.id = id;
-    }
-
-    setName(name: string){
-        this.name = name;
-    }
-
-    setEmail(email: string){
-        this.email = email;
-    }
-
-    setPassword(password: string){
-        this.password = password;
-    }
-
-    setRole(role: UserRole){
-        this.role = role;
-    }
-
-   static stringToUserRole(input: string): UserRole{
-        switch (input) {
-            case "NORMAL":
-              return UserRole.NORMAL;
-            case "ADMIN":
-              return UserRole.ADMIN;
-            default:
-              throw new Error("Invalid user role");
-          }
-    }
-
-    static toUserModel(user: any): User {
-        return new User(user.id, user.name, user.email, user.password, User.stringToUserRole(user.role));
-      }
-
-
+   public getRole(): USER_ROLES {
+      return this.role;
+   }
 }
 
-export interface UserInputDTO{
-    email: string;
-    password: string;
-    name: string;
-    role: UserRole;
-}
+export const stringToUserRole = (input: string): USER_ROLES => {
+   switch (input) {
+      case "NORMAL":
+         return USER_ROLES.NORMAL;
+      case "ADMIN":
+         return USER_ROLES.ADMIN;
+      default:
+         throw new CustomError(422, "Invalid user role");
+   }
+};
 
-export interface LoginInputDTO{
-    email: string;
-    password: string;
-}
-
-export enum UserRole{
-    NORMAL = "NORMAL",
-    ADMIN = "ADMIN"
+export enum USER_ROLES {
+   NORMAL = "NORMAL",
+   ADMIN = "ADMIN",
 }
