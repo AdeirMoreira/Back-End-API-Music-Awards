@@ -28,7 +28,7 @@ describe('testing class showInputsValidation ', () => {
             expect.assertions(2)
         }
     })
-    test('test miss week_dat', () => {
+    test('test miss week_day', () => {
         const inputs:RegisterShowDTO = {
             token:'token',
             week_day:'',
@@ -45,7 +45,7 @@ describe('testing class showInputsValidation ', () => {
             expect.assertions(2)
         }
     })
-    test('test other week_dat', () => {
+    test('test other week_day', () => {
         const inputs:RegisterShowDTO = {
             token:'token',
             week_day:'quinta',
@@ -62,12 +62,29 @@ describe('testing class showInputsValidation ', () => {
             expect.assertions(2)
         }
     })
-    test('test show Start and End inválid', () => {
+    test('test Start show inválid', () => {
         const inputs:RegisterShowDTO = {
             token:'token',
             week_day:'sexta',
             start_time:7,
             end_time:9,
+            band_id:'band_id'
+        }
+        try {
+            dataValidation.register(inputs)
+        } catch (error:any) {
+            expect(error.message).toEqual('Shows só podem ser marcados das 8h as 23h!')
+            expect(error.statusCode).toEqual(422)
+        } finally {
+            expect.assertions(2)
+        }
+    })
+    test('test End Show inválid', () => {
+        const inputs:RegisterShowDTO = {
+            token:'token',
+            week_day:'sexta',
+            start_time:20,
+            end_time:24,
             band_id:'band_id'
         }
         try {
