@@ -1,7 +1,7 @@
-import BaseDatabase from "../../src/data/BaseDatabase"
-import { DBShowMock1, DBShowMock2 } from "../../src/model/DBShowMock"
-import { Show } from "../../src/model/Show"
-import { DBShow } from "../../src/model/Types"
+import BaseDatabase from "../../../src/data/BaseDatabase"
+import { DBShowMock1, DBShowMock2 } from "../../../src/model/DBShowMock"
+import { Show } from "../../../src/model/Show"
+import { DBShow } from "../../../src/model/Types"
 import { showMock1, showMock2 } from "./ShowsMocs"
 
 

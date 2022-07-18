@@ -1,4 +1,4 @@
-import { FindByIdOrNameResponse } from "../../src/model/Band";
+import { FindByIdOrNameResponse } from "../../../src/model/Band";
 
 export const band1:FindByIdOrNameResponse = {
     id:"id1",

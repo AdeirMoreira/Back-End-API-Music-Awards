@@ -13,10 +13,13 @@ export class BandBusiness {
     private authenticator: Authenticator,
     private bandInputsValidation: BandInputsValidation
   ) {}
+
   createBand = async (input: InputCreateBandDTO) => {
     try {
       const { name, music_genre, responsible, token } = input;
+      
       this.bandInputsValidation.createBand(input);
+      
       const tokenData = this.authenticator.getTokenData(token);
 
       if (tokenData.role === USER_ROLES.NORMAL) {
@@ -37,19 +40,18 @@ export class BandBusiness {
       throw new CustomError(error.statusCode, error.message);
     }
   };
+
   selectBand = async (input: InputSelectBandDTO) => {
     try {
       const { id, name, token } = input;
+
       this.bandInputsValidation.selectBand(input);
+
       this.authenticator.getTokenData(token);
 
-      const band = await this.bandData.selectByIdOrName(id, name);
-      console.log(band)
-      return band;
+      return await this.bandData.selectByIdOrName(id, name);
+  
     } catch (error: any) {
-      if (error.message==="") {
-        throw new CustomError(404, "Banda não encontrada");
-      }
       if (error.message.includes("jwt")) {
         throw new CustomError(401, "Token inválido!");
       }

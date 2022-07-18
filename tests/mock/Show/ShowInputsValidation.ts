@@ -1,5 +1,5 @@
-import { CustomError } from "../../src/business/errors/CustomError";
-import { RegisterShowDTO, ShowsDayDTO, WEEK_DAY } from "../../src/model/Types";
+import { CustomError } from "../../../src/business/errors/CustomError";
+import { RegisterShowDTO, ShowsDayDTO, WEEK_DAY } from "../../../src/model/Types";
 
 export class showInputsValidationMock {
     register(input:RegisterShowDTO) {

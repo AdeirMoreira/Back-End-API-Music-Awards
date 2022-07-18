@@ -4,10 +4,10 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-	"name": "João",
-	"email": "joao@dev.com",
-	"password": "123456",
-	"role": "ADMIN"
+	"name": "",
+	"email": "",
+	"password": "",
+	"role": ""
 }
 
 ### LOGIN
@@ -19,7 +19,7 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-	"email": "joao@dev.com",
+	"email": "rob@dev.com",
 	"password": "123456"
 }
 
@@ -29,31 +29,31 @@ Content-Type: application/json
 @token = {{login.response.body.token}}
 
 
-
+### CREATE BAND
 POST http://localhost:3003/bands/create
 Authorization: {{token}}
 Content-Type: application/json
 
 {
-    "name": "Slipknot",
-    "music_genre": "Lambada",
-    "responsible": "Padre Marcelo Rossi"
+    "name": "NCS",
+    "music_genre": "Eletronic",
+    "responsible": "Billy Woodford"
 }
 
-###
-GET http://localhost:3003/bands?name=Cacinha Preta
+### search band by id or name
+GET http://localhost:3003/bands?name=NCS
 Authorization: {{token}}
 
-###
+### Register show
 POST http://localhost:3003/show/register
 Authorization: {{token}}
 Content-Type: application/json
 
 {
-	"week_day":"sábado", 
-	"start_time": 8, 
-    "end_time": 11,
-    "band_id":"2e907310-0c36-448d-a15f-44e34676751d"
+	"week_day":"sexta", 
+	"start_time": 20, 
+    "end_time": 23,
+    "band_id":"1a3133e3-93e2-4a8a-8a8b-f9a8b15fa05e"
 }
 
 ###
