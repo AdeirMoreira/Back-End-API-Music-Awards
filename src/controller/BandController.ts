@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import bandBusiness, {BandBusiness} from "../business/BandBusiness";
-import { CustomError } from "../business/errors/CustomError";
 import { InputCreateBandDTO, InputSelectBandDTO } from "../model/Band";
 
 export class BandController {

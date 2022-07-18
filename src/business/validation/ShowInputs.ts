@@ -44,6 +44,10 @@ export class showInputsValidation  {
         if(!Number.isInteger(endTime)) {
             throw new CustomError(422, 'Hora de Término do show inválida!')
         }
+        if(endTime < 9 || endTime > 23){
+            throw new CustomError(422, 'Shows só podem ser marcados das 8h as 23h!')
+        }
+        
     }
 
     private bandId = (band_id:string) => {

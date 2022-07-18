@@ -4,7 +4,7 @@ import { CustomError } from "../business/errors/CustomError";
 
 export class UserDatabase extends BaseDataBase {
 
-   protected tableName: string = "User_Arq";
+   protected tableName: string = "lama_users";
 
    private toModel(dbModel?: any): User | undefined {
       return (

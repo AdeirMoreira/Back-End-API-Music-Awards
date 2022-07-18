@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserData";
-import { stringToUserRole, User, USER_ROLES } from "../model/User";
+import { stringToUserRole, User } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import IdGenerator from "../services/IdGenerator";
