@@ -20,7 +20,7 @@
 
 <h2 id="documentação">📃 Documentação do Postman</h2>
 
-- [Postman]()
+- [Postman](https://documenter.getpostman.com/view/20351643/UzQvtk4N)
 
 <h2 id="features">✔️ Features</h2>
 
@@ -49,10 +49,16 @@
  <h2 id="tecnologia">🛠 Tecnologia</h2>
 
 - [TypeScript](https://www.typescriptlang.org/)
+- [NodeJS](https://nodejs.org/en/docs/)
+- [ExpressJS](https://expressjs.com/pt-br/)
+- [Jest](https://jestjs.io/pt-BR/docs/api)
+- [MySql](https://dev.mysql.com/doc/)
+- [POO](https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_orientada_a_objetos)
+
 
 <h2 id="desenvolvedores">👨‍💻 Desenvolvedores</h2>
 <table>         
-<td><a href="https://github.com/future4code/silveira-Adeir-Maia"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98994187?v=4" width="100px;" alt="Imagem profile Adeir Moreira desenvolvedor"/><br /><sub><b>Ariane Mello </b></sub></a><br /> 
+<td><a href="https://github.com/future4code/silveira-Adeir-Maia"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98994187?v=4" width="100px;" alt="Imagem profile Adeir Moreira desenvolvedor"/><br /><sub><b>Adeir Moreira</b></sub></a><br /> 
 <td><a href="https://github.com/future4code/silveira-Eric-Silva"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/99001809?v=4" width="100px;" alt="Imagem profile Eric Silva desenvolvedor"/><br /><sub><b>Eric Silva </b></sub></a><br />
 <td><a href="https://github.com/future4code/silveira-Mariana-Lima"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98923335?v=4" width="100px;" alt="Imagem profile Mariana Lima desenvolvedora"/><br /><sub><b>Mariana Lima</b></sub></a><br />
   
