@@ -1,5 +1,5 @@
-import { CustomError } from "../../src/business/errors/CustomError"
-import { InputCreateBandDTO, InputSelectBandDTO } from "../../src/model/Band"
+import { CustomError } from "../../../src/business/errors/CustomError"
+import { InputCreateBandDTO, InputSelectBandDTO } from "../../../src/model/Band"
 
 
 export class BandInputsValidationMock {

@@ -1,4 +1,4 @@
-import { Show } from "../../src/model/Show";
+import { Show } from "../../../src/model/Show";
 
 
 export const showMock1 = new Show('id1','DOMINGO', 12, 16, 'ABC')

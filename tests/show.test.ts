@@ -4,8 +4,8 @@ import { ShowDataBase } from "../src/data/ShowData"
 import { RegisterShowDTO } from "../src/model/Types"
 import { AuthenticatorMock } from "./mock/AuthenticatorMock"
 import { IdGeneratorMock } from "./mock/IdGeneratorMock"
-import { ShowDataBaseMock } from "./mock/ShowDataMock"
-import { showInputsValidationMock } from "./mock/ShowInputsValidation"
+import { ShowDataBaseMock } from "./mock/Show/ShowDataMock"
+import { showInputsValidationMock } from "./mock/Show/ShowInputsValidation"
 
 
 const dataValidation = new showInputsValidation()

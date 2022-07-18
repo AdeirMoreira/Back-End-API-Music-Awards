@@ -1,4 +1,4 @@
-import { User, USER_ROLES } from "../../src/model/User";
+import { User, USER_ROLES } from "../../../src/model/User";
 
 export const userMock = new User(
     "id_user_1",

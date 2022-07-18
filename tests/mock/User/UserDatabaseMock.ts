@@ -1,4 +1,4 @@
-import { User } from "../../src/model/User";
+import { User } from "../../../src/model/User";
 import { userAdminMock, userMock } from "./UserMock"
 
 export class UserDatabaseMock {
@@ -8,9 +8,9 @@ export class UserDatabaseMock {
 
     public async getUserByEmail(email: string): Promise<User | undefined> {
         switch(email) {
-            case "user1@gmail.com":
+            case "mayara@dev.com":
                 return userMock
-            case "user1@gmail.com":
+            case "maria@dev.com":
                 return userAdminMock
             default: 
                 return undefined
@@ -31,6 +31,4 @@ export class UserDatabaseMock {
     public async getAllUsers(): Promise<User[]> {
         return [userMock, userAdminMock]
     }
-
-
 }  

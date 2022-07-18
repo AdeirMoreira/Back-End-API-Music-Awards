@@ -3,8 +3,8 @@ import { BandInputsValidation } from "../src/business/validation/BandInputs";
 import BandData from "../src/data/BandData";
 import { InputCreateBandDTO, InputSelectBandDTO } from "../src/model/Band";
 import { AuthenticatorMock } from "./mock/AuthenticatorMock";
-import BandDataMock from "./mock/BandDataMock";
-import { BandInputsValidationMock } from "./mock/BandInputsValidationMocks";
+import BandDataMock from "./mock/Band/BandDataMock";
+import { BandInputsValidationMock } from "./mock/Band/BandInputsValidationMocks";
 import { IdGeneratorMock } from "./mock/IdGeneratorMock";
 
 const bandBusinessMock = new BandBusiness(
@@ -193,7 +193,7 @@ describe("test class bandBusiness", () => {
     test("test if band not found", async () => {
       const input: InputSelectBandDTO = {
         id: "",
-        name: "",
+        name: "band3",
         token: "123",
       };
   
