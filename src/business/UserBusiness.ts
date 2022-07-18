@@ -18,7 +18,7 @@ export class UserBusiness {
       name: string,
       email: string,
       password: string,
-      role: USER_ROLES
+      role: string
    ) {
       try {
          if (!name || !email || !password || !role) {
@@ -37,13 +37,13 @@ export class UserBusiness {
 
          const cypherPassword = await this.hashGenerator.hash(password);
 
-         await this.userDatabase.createUser(
-            new User(id, name, email, cypherPassword, stringToUserRole(role))
-         );
+         const user = new User(id, name, email, cypherPassword, stringToUserRole(role))
+         
+         await this.userDatabase.createUser(user);
 
          const token = this.tokenGenerator.generate({
             id,
-            role,
+            role: user.getRole()
          });
          return { token };
       } catch (error: any) {
@@ -65,6 +65,7 @@ export class UserBusiness {
             throw new CustomError(401, "Invalid credentials");
          }
 
+         
          const isPasswordCorrect = await this.hashGenerator.compare(
             password,
             user.getPassword()

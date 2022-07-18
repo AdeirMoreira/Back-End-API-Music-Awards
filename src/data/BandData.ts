@@ -26,22 +26,19 @@ export default class BandData extends BaseDatabase {
           .where("name", "=", name);
       }
       if (
-        !result[0].id ||
-        !result[0].music_genre ||
-        !result[0].name ||
-        !result[0].responsible
+        result.length === 0
       ) {
         throw new CustomError(404, "Banda não encontrada")
       }
       const band: FindByIdOrNameResponse = {
-        id: result[0].id,
-        name: result[0].name,
-        music_genre: result[0].music_genre,
-        responsible: result[0].responsible,
+        id: result[0]?.id,
+        name: result[0]?.name,
+        music_genre: result[0]?.music_genre,
+        responsible: result[0]?.responsible,
       };
       return band;
     } catch (error: any) {
-      throw new CustomError(500, error.sqlMessage);
+      throw new CustomError(error.statusCode || 500, error.sqlMessage || error.message);
     }
   };
 }
