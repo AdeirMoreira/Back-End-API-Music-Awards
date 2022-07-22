@@ -19,8 +19,8 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-	"email": "macaco@dev.com",
-	"password": "querobaanana"
+	"email": "",
+	"password": ""
 }
 
 ###
@@ -35,9 +35,9 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
-    "name": "NCS",
-    "music_genre": "Eletronic",
-    "responsible": "Billy Woodford"
+    "name": "",
+    "music_genre": "",
+    "responsible": ""
 }
 
 ### search band by id or name
@@ -50,10 +50,10 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
-	"week_day":"sexta", 
-	"start_time": 20, 
-    "end_time": 23,
-    "band_id":"1a3133e3-93e2-4a8a-8a8b-f9a8b15fa05e"
+	"week_day":"", 
+	"start_time": , 
+    "end_time": ,
+    "band_id":""
 }
 
 ###

@@ -26,7 +26,7 @@ export class ShowBusiness {
 
         const shows = await this.showDataBase.getAll()
         const busyTime = shows.find(
-            (show:Show) => show.getWeak_day() === week_day && 
+            (show:Show) => show.getWeak_day() === week_day.toUpperCase() && 
                 (
                     (start_time >= show.getStart_time() && start_time < show.getEnd_Time()) || 
                     (end_time > show.getStart_time() && end_time <= show.getEnd_Time()) || 
