@@ -50,10 +50,9 @@
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [NodeJS](https://nodejs.org/en/docs/)
-- [ExpressJS](https://expressjs.com/pt-br/)
 - [Jest](https://jestjs.io/pt-BR/docs/api)
 - [MySql](https://dev.mysql.com/doc/)
-- [POO](https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_orientada_a_objetos)
+
 
 
 <h2 id="desenvolvedores">👨‍💻 Desenvolvedores</h2>
