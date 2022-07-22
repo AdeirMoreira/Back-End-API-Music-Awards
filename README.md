@@ -14,7 +14,7 @@
 <h2 id="orientacoes">🚨 Orientações para acesso</h2>
 
 - Realizar o login se já possui um cadastro;
-- Realizar o cadastro com nome, email e senha se não possuir cadastro ainda.
+- Realizar o cadastro com nome, email e senha se não possuir cadastro.
 - Realiza o cadastro de bandas e shows.
 - Realiza a visualização de detalhes da banda e show.
 
