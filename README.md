@@ -7,14 +7,14 @@
 <a href="#desenvolvedores">Desenvolvedores</a>
 </p>
 
-<h1 id="sobre">📕 Projeto Labenu Music Award</h1>
+<h1 id="sobre">📕 Projeto Music Awards</h1>
 
-<p>o LAMA, *Labenu Musical Awards*, um festival  com várias bandas famosas para a formatura da sua turma e, no final, vocês podem eleger a banda que mais gostaram! Entretanto, na opinião dele, vocês só serão merecedores se entregarem um sistema impecável que permita o gerenciamento completo desses shows.</p>
+<p>API que simula um festival de música. É possível cadastrar usuários, bandas, e shows no final de semana.</p>
 
 <h2 id="orientacoes">🚨 Orientações para acesso</h2>
 
 - Realizar o login se já possui um cadastro;
-- Realizar o cadastro com nome, email e senha.
+- Realizar o cadastro com nome, email e senha se não possuir cadastro.
 - Realiza o cadastro de bandas e shows.
 - Realiza a visualização de detalhes da banda e show.
 
