@@ -4,10 +4,10 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-	"name": "",
-	"email": "",
-	"password": "",
-	"role": ""
+	"name": "adeir",
+	"email": "adeir@dev.com",
+	"password": "123123",
+	"role": "admin"
 }
 
 ### LOGIN
@@ -19,8 +19,8 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-	"email": "macaco@dev.com",
-	"password": "querobaanana"
+	"email": "ney@email.com",
+	"password": "123123"
 }
 
 ###
@@ -35,13 +35,13 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
-    "name": "NCS",
-    "music_genre": "Eletronic",
-    "responsible": "Billy Woodford"
+    "name": "Linkin Park",
+    "music_genre": "Rock",
+    "responsible": "Mick Shinoda"
 }
 
 ### search band by id or name
-GET http://localhost:3003/bands?name=NCS
+GET http://localhost:3003/bands?name=linkin
 Authorization: {{token}}
 
 ### Register show
@@ -50,10 +50,10 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
-	"week_day":"sexta", 
-	"start_time": 20, 
-    "end_time": 23,
-    "band_id":"1a3133e3-93e2-4a8a-8a8b-f9a8b15fa05e"
+	"week_day":"sábado", 
+	"start_time": 16, 
+    "end_time": 20,
+    "band_id":"85b05940-6277-4493-9e98-ba01cc559ffc"
 }
 
 ###

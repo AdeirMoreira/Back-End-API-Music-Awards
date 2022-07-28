@@ -1,0 +1,657 @@
+{
+	"info": {
+		"_postman_id": "924bc069-7b31-47ef-a420-af80972e4566",
+		"name": "Labenu-Music-Awards-IDP",
+		"description": "API que simula um festival de musica. É possível cadastrar um USUÁRIO, uma BANDA, e um SHOW nos dias SEXTA, SÁBADO E DOMINGO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20351643"
+	},
+	"item": [
+		{
+			"name": "Registrar Usuário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"thomas shelby\",\r\n\t\"email\": \"thomy@shelby.com\",\r\n\t\"password\": \"Peaky Blinders\",\r\n\t\"role\": \"ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://labenu-music-awards-idp.herokuapp.com/users/signup",
+					"protocol": "https",
+					"host": [
+						"labenu-music-awards-idp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"signup"
+					]
+				},
+				"description": "Para se cadastrar, é necessário passar um email, um nome e uma senha, e também uma função dentro do sistema. Você pode ser um cliente (usuário normal) ou um administrador do sistema (admin)."
+			},
+			"response": [
+				{
+					"name": "Registrar Usuário",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"thomas shelby\",\r\n\t\"email\": \"thomy@shelby.com\",\r\n\t\"password\": \"Peaky Blinders\",\r\n\t\"role\": \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://labenu-music-awards-idp.herokuapp.com/users/signup",
+							"protocol": "https",
+							"host": [
+								"labenu-music-awards-idp",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "219"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"db-McAgbkQCdAcj5tTxcsEAl6HVAS0\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Jul 2022 02:22:08 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM3YWE3MmIxLTA2OTUtNGQ3YS05OWEyLWNkNGIzN2JhMjUzNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODk3NDkyOCwiZXhwIjoxNjU5MDE4MTI4fQ.56VEvS2bNMc96HbsM9RD2mPodfuogDsJINJS8CBo_eI\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"thomy@shelby.com\",\r\n\t\"password\": \"Peaky Blinders\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://labenu-music-awards-idp.herokuapp.com/users/login",
+					"protocol": "https",
+					"host": [
+						"labenu-music-awards-idp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				},
+				"description": "Para realizar o login, basta informar seu e-mail e a sua senha. O retorno deve conter o token de autenticação do usuário."
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"thomy@shelby.com\",\r\n\t\"password\": \"Peaky Blinders\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://labenu-music-awards-idp.herokuapp.com/users/login",
+							"protocol": "https",
+							"host": [
+								"labenu-music-awards-idp",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "219"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"db-zFWzwqCGGjRzfjmKHHIu7Yi8AIc\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Jul 2022 02:22:55 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM3YWE3MmIxLTA2OTUtNGQ3YS05OWEyLWNkNGIzN2JhMjUzNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODk3NDk3NSwiZXhwIjoxNjU5MDE4MTc1fQ.yrjolwDV1FBy7PZodAhHxa3_hmqJ-eI3hJ741HtwAD0\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Registrar Banda",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0NmYzZmU2LTllNTctNDcxNS1hMmQ5LWM1MTFjNmEwY2YzOCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODk3MTQ0NSwiZXhwIjoxNjU5MDE0NjQ1fQ.BwXGszcE-KuYpJ1HaJheeqGBF2NdLNg13fW1qydJlQE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chiclete com Banana\",\r\n    \"music_genre\": \"gospel\",\r\n    \"responsible\": \"Acerola\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://labenu-music-awards-idp.herokuapp.com/bands/create",
+					"protocol": "https",
+					"host": [
+						"labenu-music-awards-idp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"bands",
+						"create"
+					]
+				},
+				"description": "Para uma banda ser criada, precisamos das informações: nome, gênero musical principal a qual ela se identifica e o nome de um responsável (que pode ser qualquer membro dela). Não podem existir duas bandas com o mesmo nome. Somente administradores podem registrar bandas"
+			},
+			"response": [
+				{
+					"name": "Register User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3YWIxZGRjLWYzZDYtNDMxNC1hYjEwLTQxNzRkNGMyNzJhYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODEwOTg1MiwiZXhwIjoxNjU4MTUzMDUyfQ.kY8RWo5yWgrb9sbivoBCUsCwI8s6GoCu_TXqgxMfxeU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Chiclete com Banana\",\r\n    \"music_genre\": \"gospel\",\r\n    \"responsible\": \"Acerola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://labenu-music-awards-idp.herokuapp.com/bands/create",
+							"protocol": "https",
+							"host": [
+								"labenu-music-awards-idp",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bands",
+								"create"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"26-JRb83CSCA3LAu9NTw8koDiHWqa4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Jul 2022 02:04:42 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Banda criada com sucesso\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Procurar banda por ID ou NAME",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0NmYzZmU2LTllNTctNDcxNS1hMmQ5LWM1MTFjNmEwY2YzOCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODk3MTQ0NSwiZXhwIjoxNjU5MDE0NjQ1fQ.BwXGszcE-KuYpJ1HaJheeqGBF2NdLNg13fW1qydJlQE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://labenu-music-awards-idp.herokuapp.com/bands?id=&name=Chiclete com Banana",
+					"protocol": "https",
+					"host": [
+						"labenu-music-awards-idp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"bands"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": ""
+						},
+						{
+							"key": "name",
+							"value": "Chiclete com Banana"
+						}
+					]
+				},
+				"description": "Esse endpoint deve receber o id ou o nome da banda e retornar todas as informações salvas sobre ela."
+			},
+			"response": [
+				{
+					"name": "Search band by ID or NAME",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3YWIxZGRjLWYzZDYtNDMxNC1hYjEwLTQxNzRkNGMyNzJhYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODEwOTg1MiwiZXhwIjoxNjU4MTUzMDUyfQ.kY8RWo5yWgrb9sbivoBCUsCwI8s6GoCu_TXqgxMfxeU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://labenu-music-awards-idp.herokuapp.com/bands?id=&name=NCS",
+							"protocol": "https",
+							"host": [
+								"labenu-music-awards-idp",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bands"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								},
+								{
+									"key": "name",
+									"value": "NCS"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"73-ZLYHx9MIFqAKllPGaxQSmn4h9Jc\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Jul 2022 02:07:40 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"1a3133e3-93e2-4a8a-8a8b-f9a8b15fa05e\",\n    \"name\": \"NCS\",\n    \"music_genre\": \"Eletronic\",\n    \"responsible\": \"Billy Woodford\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Registrar um show",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0NmYzZmU2LTllNTctNDcxNS1hMmQ5LWM1MTFjNmEwY2YzOCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODk3MTQ0NSwiZXhwIjoxNjU5MDE0NjQ1fQ.BwXGszcE-KuYpJ1HaJheeqGBF2NdLNg13fW1qydJlQE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"week_day\":\"Domingo\", \r\n\t\"start_time\": 16, \r\n    \"end_time\": 20,\r\n    \"band_id\":\"acbb0598-7efc-44a1-bc60-a40a7c2cc63a\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://labenu-music-awards-idp.herokuapp.com/show/register",
+					"protocol": "https",
+					"host": [
+						"labenu-music-awards-idp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"show",
+						"register"
+					]
+				},
+				"description": "Para cadastrar um show, o endpoint precisa do id da banda, o dia (sexta, sábado ou domingo) e o horário em que ela irá se apresentar. Deve haver uma validação para indicar se o horário é válido (ou seja, se está entre 08h e 23h). Além disso os shows só podem ser marcados em horários redondos, ou seja, pode ser 08h - 09h ou 09h - 13h mas não pode ser 09h - 10h30 ou 10h30 - 14h."
+			},
+			"response": [
+				{
+					"name": "Registrar",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3YWIxZGRjLWYzZDYtNDMxNC1hYjEwLTQxNzRkNGMyNzJhYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODEwOTg1MiwiZXhwIjoxNjU4MTUzMDUyfQ.kY8RWo5yWgrb9sbivoBCUsCwI8s6GoCu_TXqgxMfxeU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"week_day\":\"Domingo\", \r\n\t\"start_time\": 16, \r\n    \"end_time\": 20,\r\n    \"band_id\":\"acbb0598-7efc-44a1-bc60-a40a7c2cc63a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://labenu-music-awards-idp.herokuapp.com/show/register",
+							"protocol": "https",
+							"host": [
+								"labenu-music-awards-idp",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"show",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Jul 2022 02:13:58 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Pegar shows do dia",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0NmYzZmU2LTllNTctNDcxNS1hMmQ5LWM1MTFjNmEwY2YzOCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODk3MTQ0NSwiZXhwIjoxNjU5MDE0NjQ1fQ.BwXGszcE-KuYpJ1HaJheeqGBF2NdLNg13fW1qydJlQE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://labenu-music-awards-idp.herokuapp.com/show/domingo",
+					"protocol": "https",
+					"host": [
+						"labenu-music-awards-idp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"show",
+						"domingo"
+					]
+				},
+				"description": "StartFragment\n\nRecebe um dia (sexta, sábado ou domingo) e retorna todos os shows daquela data (ordenados pelo horário), mostrando somente o nome da banda e o gênero musical principal.\n\nEndFragment"
+			},
+			"response": [
+				{
+					"name": "Pegar shows do dia",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3YWIxZGRjLWYzZDYtNDMxNC1hYjEwLTQxNzRkNGMyNzJhYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1ODEwOTUzMCwiZXhwIjoxNjU4MTUyNzMwfQ.T869DM6-X66bNkhr4JD4MSGHR8tN8V2BfGWgHU1tfNo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://labenu-music-awards-idp.herokuapp.com/show/sexta",
+							"protocol": "https",
+							"host": [
+								"labenu-music-awards-idp",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"show",
+								"sexta"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "237"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"ed-9JX/Xi0/xheaT3ZZ53pNr6C1b6I\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Jul 2022 02:22:12 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Nome_da_Banda\": \"Cachinha Preta\",\n        \"género\": \"Forró\",\n        \"Início\": 8,\n        \"Término\": 10\n    },\n    {\n        \"Nome_da_Banda\": \"Raí Saia Rodada\",\n        \"género\": \"Forró\",\n        \"Início\": 10,\n        \"Término\": 13\n    },\n    {\n        \"Nome_da_Banda\": \"NCS\",\n        \"género\": \"Eletronic\",\n        \"Início\": 20,\n        \"Término\": 23\n    }\n]"
+				}
+			]
+		}
+	]
+}
