@@ -1,5 +1,5 @@
 import { RegisterShowDTO, ShowsDayDTO, WEEK_DAY } from "../../model/Types";
-import { CustomError } from "../errors/CustomError";
+import { CustomError } from "../../model/errors/CustomError";
 
 
 export class showInputsValidation  {
@@ -18,11 +18,6 @@ export class showInputsValidation  {
 
 
     private week_day = (week_day:string) => {
-        // const invertedDate = date.split('/').reverse().join('-')
-        // const enventDay = new Date(invertedDate).toString().slice(0,3)
-        // if(enventDay !== 'Fri' && enventDay !== 'Sat' && enventDay !== 'Sun'){
-        //     throw new CustomError(422,'O dia do Show precisa ser SEXTA, SÁBADO, ou DOMINGO')
-        // }
         if(!(week_day in WEEK_DAY)){
             throw new CustomError(422,'O dia do show precisa ser SEXTA, SÁBADO, ou DOMINGO')
         }

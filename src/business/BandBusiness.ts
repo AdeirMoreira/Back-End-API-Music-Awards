@@ -3,7 +3,7 @@ import Band, { InputCreateBandDTO, InputSelectBandDTO } from "../model/Band";
 import { USER_ROLES } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import IdGenerator from "../services/IdGenerator";
-import { CustomError } from "./errors/CustomError";
+import { CustomError } from "../model/errors/CustomError";
 import { BandInputsValidation } from "./validation/BandInputs";
 
 export class BandBusiness {
@@ -19,6 +19,14 @@ export class BandBusiness {
       const { name, music_genre, responsible, token } = input;
       
       this.bandInputsValidation.createBand(input);
+
+      const band = await this.bandData.selectByIdOrName('',name)
+      if(band.name){
+        throw new CustomError(
+          409,
+          "Essa banda já foi registrada!"
+        );
+      }
       
       const tokenData = this.authenticator.getTokenData(token);
 
@@ -31,8 +39,8 @@ export class BandBusiness {
 
       const id = this.idGenerator.generateId();
 
-      const band = new Band(id, name, music_genre, responsible);
-      await this.bandData.insertBand(band);
+      const newBand = new Band(id, name, music_genre, responsible);
+      await this.bandData.insertBand(newBand);
     } catch (error: any) {
       if (error.message.includes("jwt")) {
         throw new CustomError(401, "Token inválido!");
@@ -49,8 +57,11 @@ export class BandBusiness {
 
       this.authenticator.getTokenData(token);
 
-      return await this.bandData.selectByIdOrName(id, name);
-  
+      const result = await this.bandData.selectByIdOrName(id, name);
+      if (!result.id) {
+        throw new CustomError(404, "Banda não encontrada")
+      }
+      return result
     } catch (error: any) {
       if (error.message.includes("jwt")) {
         throw new CustomError(401, "Token inválido!");

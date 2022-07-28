@@ -1,4 +1,4 @@
-import { CustomError } from "../../src/business/errors/CustomError";
+import { CustomError } from "../../src/model/errors/CustomError";
 import { USER_ROLES } from "../../src/model/User";
 
 

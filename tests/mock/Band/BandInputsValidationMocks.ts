@@ -1,4 +1,4 @@
-import { CustomError } from "../../../src/business/errors/CustomError"
+import { CustomError } from "../../../src/model/errors/CustomError"
 import { InputCreateBandDTO, InputSelectBandDTO } from "../../../src/model/Band"
 
 

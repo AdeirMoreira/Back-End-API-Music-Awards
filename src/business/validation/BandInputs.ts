@@ -1,5 +1,5 @@
 import { InputCreateBandDTO, InputSelectBandDTO } from "../../model/Band";
-import { CustomError } from "../errors/CustomError";
+import { CustomError } from "../../model/errors/CustomError";
 
 export class BandInputsValidation {
     createBand(input: InputCreateBandDTO) {
