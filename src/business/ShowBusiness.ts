@@ -1,5 +1,5 @@
 import { ShowDataBase } from "../data/ShowData";
-import { CustomError } from "./errors/CustomError";
+import { CustomError } from "../model/errors/CustomError";
 import { Show } from "../model/Show";
 import { RegisterShowDTO, ShowsDayDTO } from "../model/Types"
 import { Authenticator } from "../services/Authenticator"
@@ -26,7 +26,7 @@ export class ShowBusiness {
 
         const shows = await this.showDataBase.getAll()
         const busyTime = shows.find(
-            (show:Show) => show.getWeak_day() === week_day && 
+            (show:Show) => show.getWeak_day() === week_day.toUpperCase() && 
                 (
                     (start_time >= show.getStart_time() && start_time < show.getEnd_Time()) || 
                     (end_time > show.getStart_time() && end_time <= show.getEnd_Time()) || 
