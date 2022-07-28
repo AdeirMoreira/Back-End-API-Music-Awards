@@ -1,5 +1,5 @@
 import { ShowDataBase } from "../data/ShowData";
-import { CustomError } from "./errors/CustomError";
+import { CustomError } from "../model/errors/CustomError";
 import { Show } from "../model/Show";
 import { RegisterShowDTO, ShowsDayDTO } from "../model/Types"
 import { Authenticator } from "../services/Authenticator"

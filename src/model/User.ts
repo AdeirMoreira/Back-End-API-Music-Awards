@@ -1,4 +1,4 @@
-import { CustomError } from "../business/errors/CustomError";
+import { CustomError } from "./errors/CustomError";
 
 export class User {
    constructor(

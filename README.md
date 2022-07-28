@@ -1,15 +1,37 @@
 <p>
 <a href="#sobre">Sobre</a> |
-<a href="#orientacoes">Orientações</a> |
-<a href="documentação">Documentação</a> |
-<a href="#features">Features</a> |
 <a href="#tecnologia">Tecnologia</a> |
+<a href="#link">Link da API</a> |
+<a href="#documentação">Documentação</a> |
+<a href="#orientacoes">Orientações</a> |
+<a href="#features">Features</a> |
+<a href="#back">Rodando o back-end</a> |
 <a href="#desenvolvedores">Desenvolvedores</a>
 </p>
 
 <h1 id="sobre">📕 Projeto Music Awards</h1>
 
-<p>API que simula um festival de música. É possível cadastrar usuários, bandas, e shows no final de semana.</p>
+Uma API REST para um festival de música em um fim de semana. Nessa API, podemos cadastrar um usuário, uma banda e um show. O projeto conta com **autenticação JWT** e **Hash de senha**, além de **testes unitários**. A API foi desenvolvida utilizado as tecnologias **TYPESCRIPT, NODE.JS, EXPRESS.JS, MYSQL** como banco de dados e **JEST** para testes unitários. Além disso, o projeto foi estruturado utilizando 
+**PROGRAMAÇÃO ORIENTADA A OBJETOS(POO)** e princípios **S.O.L.I.D.**
+
+<h2 id="tecnologia">🛠 Tecnologias</h2>
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [NodeJS](https://nodejs.org/en/docs/)
+- [Jest](https://jestjs.io/pt-BR/docs/api)
+- [MySql](https://dev.mysql.com/doc/)
+
+<h2 id="link">🔗 Link base da API</h2>
+
+#### https://labenu-music-awards-idp.herokuapp.com
+
+<h2 id="documentação">📃 Documentação</h2>
+
+- Na documentação você encontra todas informações sobre como usar cada endpoint da API. Você pode clicar em "Run in Postman" para testar os endpoints na versão web do postman.
+- [Documentação](https://documenter.getpostman.com/view/20351643/UzQvtk4N)
+- Você tambem pode usar o arquivo JSON  com os endPonins se tiver o postman instalado na sua máquina.
+- [POSTMAN](https://www.postman.com/downloads/)
+- [Labenu-Music-Awards-IDP.postman_collection.json](https://github.com/AdeirMoreira/Projeto-Music-Awards/blob/master/Labenu-Music-Awards-IDP.postman_collection.json)
 
 <h2 id="orientacoes">🚨 Orientações para acesso</h2>
 
@@ -45,15 +67,35 @@
 
 - [x] Recebe um dia (sexta, sábado ou domingo) e retorna todos os shows daquela data (ordenados pelo horário), mostrando somente o nome da banda e o gênero musical principal e o horário de início e fim dos shows do dia.
 
+<h2 id="back"> 🎲 Rodando o Back End (servidor)</h2>
 
- <h2 id="tecnologia">🛠 Tecnologia</h2>
+### Pre-Requisitos
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [NodeJS](https://nodejs.org/en/docs/)
-- [Jest](https://jestjs.io/pt-BR/docs/api)
-- [MySql](https://dev.mysql.com/doc/)
+- Para rodar o projeto você vai precisar do [Node.JS](https://nodejs.org/en/download/),
+- Uma instancia de um banco de dados MySQL
+- Um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
+### Como instalar e Rodar
+* Para baixar o projeto
+```
+1. git clone https://github.com/AdeirMoreira/Projeto-Music-Awards.git
+2. cd Projeto-Music-Awards
+```
+* Para instalar e rodar o projeto
+```
+3. npm install
+4. npm dev
+    ou
+3. yarn install
+4. yarn dev
+```
+* Para rodar os testes 
+```
+5. npm test
+5. yarn test
+```
 
+Renomeie o arquivo ```.env.example```  para ```.env``` e preencha as variáveis com seus dados do banco de dados MySQL. É muito importante para a execução do servidor.
 
 <h2 id="desenvolvedores">👨‍💻 Desenvolvedores</h2>
 <table>         

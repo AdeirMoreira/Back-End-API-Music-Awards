@@ -1,4 +1,4 @@
-import { CustomError } from "../../../src/business/errors/CustomError";
+import { CustomError } from "../../../src/model/errors/CustomError";
 import Band, { FindByIdOrNameResponse } from "../../../src/model/Band";
 import { band1, band2 } from "./BandMock";
 

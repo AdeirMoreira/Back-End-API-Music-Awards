@@ -4,10 +4,10 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-	"name": "",
-	"email": "",
-	"password": "",
-	"role": ""
+	"name": "adeir",
+	"email": "adeir@dev.com",
+	"password": "123123",
+	"role": "admin"
 }
 
 ### LOGIN
@@ -35,13 +35,14 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
+
     "name": "",
     "music_genre": "",
     "responsible": ""
 }
 
 ### search band by id or name
-GET http://localhost:3003/bands?name=NCS
+GET http://localhost:3003/bands?name=linkin
 Authorization: {{token}}
 
 ### Register show
@@ -50,6 +51,7 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
+
 	"week_day":"", 
 	"start_time": , 
     "end_time": ,

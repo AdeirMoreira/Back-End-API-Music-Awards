@@ -1,9 +1,9 @@
 import { app } from "./controller/app";
 import express from "express";
 import cors from "cors";
-import { userRouter } from "./business/routes/userRouter";
-import { bandRouter } from "./business/routes/bandRouter";
-import { showRouter } from "./business/routes/showRouter";
+import { userRouter } from "./routes/userRouter";
+import { bandRouter } from "./routes/bandRouter";
+import { showRouter } from "./routes/showRouter";
 
 
 app.use(express.json())

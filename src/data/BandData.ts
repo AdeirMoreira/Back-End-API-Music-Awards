@@ -1,4 +1,4 @@
-import { CustomError } from "../business/errors/CustomError";
+import { CustomError } from "../model/errors/CustomError";
 import Band, { FindByIdOrNameResponse } from "../model/Band";
 import BaseDatabase from "./BaseDatabase";
 
@@ -23,12 +23,7 @@ export default class BandData extends BaseDatabase {
       } else {
         result = await BandData.connection("lama_bands")
           .select("*")
-          .where("name", "=", name);
-      }
-      if (
-        result.length === 0
-      ) {
-        throw new CustomError(404, "Banda não encontrada")
+          .where("name", "LIKE", `%${name}%`);
       }
       const band: FindByIdOrNameResponse = {
         id: result[0]?.id,

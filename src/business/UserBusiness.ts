@@ -3,7 +3,7 @@ import { stringToUserRole, User } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import IdGenerator from "../services/IdGenerator";
-import { CustomError } from "./errors/CustomError";
+import { CustomError } from "../model/errors/CustomError";
 
 
 export class UserBusiness {
@@ -33,17 +33,22 @@ export class UserBusiness {
             throw new CustomError(422, "Invalid password");
          }
 
+         const user = await this.userDatabase.getUserByEmail(email)
+         if(user?.getEmail()) {
+            throw new CustomError(409, "Já há um cadastro para este e-mail");
+         }
+
          const id = this.idGenerator.generateId();
 
          const cypherPassword = await this.hashGenerator.hash(password);
 
-         const user = new User(id, name, email, cypherPassword, stringToUserRole(role))
+         const newUser = new User(id, name, email, cypherPassword, stringToUserRole(role))
          
-         await this.userDatabase.createUser(user);
+         await this.userDatabase.createUser(newUser);
 
          const token = this.tokenGenerator.generate({
             id,
-            role: user.getRole()
+            role: newUser.getRole()
          });
          return { token };
       } catch (error: any) {
