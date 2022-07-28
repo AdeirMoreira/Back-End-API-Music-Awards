@@ -40,6 +40,10 @@ Uma API REST para um festival de música em um fim de semana. Nessa API, podemos
 - Realiza o cadastro de bandas e shows.
 - Realiza a visualização de detalhes da banda e show.
 
+<h2 id="documentação">📃 Documentação do Postman</h2>
+
+- [Postman](https://documenter.getpostman.com/view/20351643/UzQvtk4N)
+
 <h2 id="features">✔️ Features</h2>
 
 👤 Login/Cadastro
