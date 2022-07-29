@@ -11,7 +11,7 @@
 
 <h1 id="sobre">📕 Projeto Music Awards</h1>
 
-Uma API REST para um festival de música em um fim de semana. Nessa API, podemos cadastrar um usuário, uma banda e um show. O projeto conta com **autenticação JWT** e **Hash de senha**, além de **testes unitários**. A API foi desenvolvida utilizado as tecnologias **TYPESCRIPT, NODE.JS, EXPRESS.JS, MYSQL** como banco de dados e **JEST** para testes unitários. Além disso, o projeto foi estruturado utilizando 
+O projeto Music-Awards é uma API REST para um festival de música em um fim de semana. Nessa API, podemos cadastrar um usuário, uma banda e um show. O projeto conta com **autenticação JWT** e **Hash de senha**, além de **testes unitários**. A API foi desenvolvida utilizado as tecnologias **TYPESCRIPT, NODE.JS, EXPRESS.JS, MYSQL** como banco de dados e **JEST** para testes unitários. Além disso, o projeto foi estruturado utilizando 
 **PROGRAMAÇÃO ORIENTADA A OBJETOS(POO)** e princípios **S.O.L.I.D.**
 
 <h2 id="tecnologia">🛠 Tecnologias</h2>
