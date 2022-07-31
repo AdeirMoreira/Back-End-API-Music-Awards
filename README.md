@@ -3,6 +3,7 @@
 <a href="#tecnologia">Tecnologia</a> |
 <a href="#link">Link da API</a> |
 <a href="#documentação">Documentação</a> |
+<a href="#postmam">Documentação</a> |
 <a href="#orientacoes">Orientações</a> |
 <a href="#features">Features</a> |
 <a href="#back">Rodando o back-end</a> |
@@ -29,6 +30,10 @@ O projeto Music-Awards é uma API REST para um festival de música em um fim de 
 
 - Na documentação você encontra todas informações sobre como usar cada endpoint da API. Você pode clicar em "Run in Postman" para testar os endpoints na versão web do postman.
 - [Documentação](https://documenter.getpostman.com/view/20351643/UzQvtk4N)
+<h2 id="postmam"> Postmam</h2>
+
+
+- O Postman é um API Client que facilita aos desenvolvedores criar, compartilhar, testar e documentar APIs. Isso é feito, permitindo aos usuários criar e salvar       solicitações HTTP e HTTPs simples e complexas, bem como ler suas respostas.
 - Você tambem pode usar o arquivo JSON  com os endPontins se tiver o postman instalado na sua máquina.
 - [POSTMAN](https://www.postman.com/downloads/)
 - [Labenu-Music-Awards-IDP.postman_collection.json](https://github.com/AdeirMoreira/Projeto-Music-Awards/blob/master/Labenu-Music-Awards-IDP.postman_collection.json)
@@ -39,10 +44,8 @@ O projeto Music-Awards é uma API REST para um festival de música em um fim de 
 - Realizar o cadastro com nome, email e senha se não possuir cadastro.
 - Realiza o cadastro de bandas e shows.
 - Realiza a visualização de detalhes da banda e show.
+![postman-icon-svgrepo-com](https://user-images.githubusercontent.com/98994187/182048033-f81fac19-1c26-45c0-96da-a5ffbc0defec.svg)
 
-<h2 id="documentação">📃 Documentação do Postman</h2>
-
-- [Postman](https://documenter.getpostman.com/view/20351643/UzQvtk4N)
 
 <h2 id="features">✔️ Features</h2>
 
